@@ -23,15 +23,6 @@ if ! bazel build "$TARGET"; then
     exit 1
 fi
 
-# Build UF2 version
-UF2_TARGET="${TARGET}.uf2"
-echo "⚡ Building UF2 target: $UF2_TARGET"
-if ! bazel build --aspects=@pico-sdk//tools:uf2_aspect.bzl%pico_uf2_aspect \
-    --output_groups=+pico_uf2_files "$TARGET"; then
-    echo "❌ UF2 conversion failed"
-    exit 1
-fi
-
 # Get UF2 path
 UF2_PATH=$(bazel cquery --output=files "$TARGET")
 UF2_PATH="${UF2_PATH}.uf2"

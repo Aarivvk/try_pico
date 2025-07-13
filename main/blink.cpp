@@ -5,9 +5,11 @@
  */
 
 #include "pico/stdlib.h"
+#include <fmt/core.h>
+
 
 #ifndef LED_DELAY_MS
-#define LED_DELAY_MS 100
+#define LED_DELAY_MS 500
 #endif
 
 // Perform initialisation
@@ -25,7 +27,9 @@ void pico_set_led(bool led_on) {
 int main() {
     int rc = pico_led_init();
     hard_assert(rc == PICO_OK);
+    stdio_init_all();
     while (true) {
+        fmt::print("Hello via USB!\n");
         pico_set_led(true);
         sleep_ms(LED_DELAY_MS);
         pico_set_led(false);

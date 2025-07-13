@@ -1,2 +1,5 @@
-common --enable_bzlmod
 build --platforms=@pico-sdk//bazel/platform:rp2350
+build --@pico-sdk//bazel/config:PICO_STDIO_USB=True
+build --aspects=@pico-sdk//tools:uf2_aspect.bzl%pico_uf2_aspect
+build --output_groups=+pico_uf2_files
+
