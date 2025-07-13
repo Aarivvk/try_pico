@@ -1,0 +1,10 @@
+module(name = "pico", version = "1.0.0")
+
+bazel_dep(name = "pico-sdk", version = "2.1.1")
+
+bazel_dep(name = "platforms", version = "0.0.10")
+
+register_toolchains(
+"@pico-sdk//bazel/toolchain:linux-aarch64-rp2040",
+"@pico-sdk//bazel/toolchain:linux-aarch64-rp2350",
+)

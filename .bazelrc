@@ -1,0 +1,2 @@
+common --enable_bzlmod
+build --platforms=@pico-sdk//bazel/platform:rp2350
